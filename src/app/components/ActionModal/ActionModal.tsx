@@ -64,8 +64,6 @@ function ActionModal({ visible, type, deleteItem, onClose }: ActionModalType) {
     if (type === "delete") {
       dispatch(deleteTask(deleteItem?.id ?? ""));
     }
-
-    console.log(taskItem);
     handleReset(() => {
       onClose();
     });
