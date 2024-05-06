@@ -1,5 +1,5 @@
 .container {
-  width: 400px;
+  width: 325px;
 }
 
 .desc {
@@ -8,6 +8,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px;
+}
+
+.title {
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 640px) {

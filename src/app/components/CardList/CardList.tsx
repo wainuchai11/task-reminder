@@ -7,8 +7,8 @@ function CardList({ data }: CardListType) {
   return (
     <Flex
       className={styles.container}
-      gap="middle"
-      justify="space-between"
+      gap="small"
+      justify="start"
       align="center"
       wrap
     >

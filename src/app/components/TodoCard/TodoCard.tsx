@@ -81,15 +81,24 @@ function TodoCard({
           <Checkbox onChange={handleCheckbox} checked={checkedBox} />
           <div className={styles.contentContainer}>
             <Flex className={styles.cardHeader} gap="small" align="center">
-              <h2>{title}</h2>
+              {title.length > 10 ? (
+                <Tooltip title={title}>
+                  <h3 className={styles.title}>{title}</h3>
+                </Tooltip>
+              ) : (
+                <h3 className={styles.title}>{title}</h3>
+              )}
               <Tag icon={handleIcon(status)} color={handleTagColor(status)}>
-                {status.toUpperCase()}
+                <span className={styles.status}>{status}</span>
               </Tag>
             </Flex>
-
-            <Tooltip title={description}>
+            {description.length > 20 ? (
+              <Tooltip title={description}>
+                <p className={styles.desc}>{description}</p>
+              </Tooltip>
+            ) : (
               <p className={styles.desc}>{description}</p>
-            </Tooltip>
+            )}
 
             <p>Due date : {date}</p>
           </div>
