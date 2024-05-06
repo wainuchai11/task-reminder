@@ -38,10 +38,15 @@ const taskSlice = createSlice({
       }
     },
     filterTaskStatus: (state, action: PayloadAction<string>) => {
-      if (action.payload === "all") {
-        return state;
+      console.log(action.payload);
+      let taskList = localStorage.getItem("taskList");
+      if (taskList) {
+        state = JSON.parse(taskList);
+        if (action.payload === "all") {
+          return state;
+        }
+        return state.filter((task) => task.status === action.payload);
       }
-      return state.filter((task) => task.status === action.payload);
     },
     autoUpdateDelayedTask: (state) => {
       if (state.length === 0) return state;

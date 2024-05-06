@@ -7,7 +7,11 @@ import CardList from "./components/CardList/CardList";
 import ActionModal from "./components/ActionModal/ActionModal";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { autoUpdateDelayedTask, getTaskList } from "@/store/slices/taskSlice";
+import {
+  autoUpdateDelayedTask,
+  filterTaskStatus,
+  getTaskList,
+} from "@/store/slices/taskSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -21,7 +25,7 @@ export default function Home() {
   }, []);
 
   const handleFilter = (value: string) => {
-    console.log(value);
+    dispatch(filterTaskStatus(value));
   };
 
   const handleOpenModal = () => {
