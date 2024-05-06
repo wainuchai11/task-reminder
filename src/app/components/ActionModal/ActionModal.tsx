@@ -12,8 +12,11 @@ import {
 } from "antd";
 import styles from "./actionModal.module.css";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { addTask, deleteTask } from "@/store/slices/taskSlice";
 
 function ActionModal({ visible, type, deleteItem, onClose }: ActionModalType) {
+  const dispatch = useDispatch();
   const [isvisible, setIsVisible] = useState<boolean>(visible);
   const [taskItem, setTaskItem] = useState<CreateTaskItem>({
     title: "",
@@ -49,10 +52,17 @@ function ActionModal({ visible, type, deleteItem, onClose }: ActionModalType) {
 
   const handleOkBtn = (type: string, deleteItem?: deleteItem) => {
     if (type === "add") {
-      setTaskItem({ ...taskItem, id: uuidv4() });
+      dispatch(
+        addTask({
+          ...taskItem,
+          id: uuidv4(),
+          status: "",
+          isChecked: false,
+        })
+      );
     }
     if (type === "delete") {
-      console.log(deleteItem);
+      dispatch(deleteTask(deleteItem?.id ?? ""));
     }
 
     console.log(taskItem);

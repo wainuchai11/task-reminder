@@ -17,6 +17,8 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import ActionModal from "../ActionModal/ActionModal";
+import { useDispatch } from "react-redux";
+import { checkTask } from "@/store/slices/taskSlice";
 
 function TodoCard({
   id,
@@ -26,8 +28,11 @@ function TodoCard({
   status,
   isChecked,
 }: CardType) {
+  const dispatch = useDispatch();
+
   const [checkedBox, setCheckedBox] = useState<boolean>(isChecked);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [currentId, setCurrentId] = useState<string>(id);
 
   const handleIcon = (status: string) => {
     switch (status) {
@@ -57,6 +62,7 @@ function TodoCard({
 
   const handleCheckbox: CheckboxProps["onChange"] = (e) => {
     setCheckedBox(e.target.checked);
+    dispatch(checkTask(currentId));
   };
 
   const isOpenDeleteModal = () => {
@@ -85,7 +91,7 @@ function TodoCard({
               <p className={styles.desc}>{description}</p>
             </Tooltip>
 
-            <p>{date}</p>
+            <p>Due date : {date}</p>
           </div>
           <Tooltip title="delete">
             <Button
