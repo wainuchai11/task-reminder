@@ -1,0 +1,32 @@
+.container {
+  /* padding: 20px 0; */
+}
+
+.header {
+  padding: 10px 0;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.selector {
+  width: 150px
+}
+
+@media screen and (max-width: 640px) {
+  .text {
+    font-size: 16px;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start !important;
+    align-items: start !important;
+  }
+}

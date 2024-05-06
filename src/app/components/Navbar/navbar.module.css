@@ -1,0 +1,33 @@
+.container {
+  padding: 20px;
+  height: 70px;
+  background-color: var(--primarry-color);
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.btn {
+  color: #fff !important;
+}
+
+@media screen and (max-width: 640px) {
+  .container {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .actions {
+    gap: 10px !important;
+    font-size: 14px !important;
+  }
+}
