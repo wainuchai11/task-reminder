@@ -16,6 +16,7 @@ import {
   FieldTimeOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
+import ActionModal from "../ActionModal/ActionModal";
 
 function TodoCard({
   id,
@@ -25,7 +26,8 @@ function TodoCard({
   status,
   isChecked,
 }: CardType) {
-  const [checkedBox, setCheckedBox] = useState(isChecked);
+  const [checkedBox, setCheckedBox] = useState<boolean>(isChecked);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const handleIcon = (status: string) => {
     switch (status) {
@@ -58,7 +60,7 @@ function TodoCard({
   };
 
   const isOpenDeleteModal = () => {
-    console.log("Delete Modal");
+    setIsModalVisible(true);
   };
 
   return (
@@ -95,6 +97,12 @@ function TodoCard({
           </Tooltip>
         </Flex>
       </Card>
+      <ActionModal
+        visible={isModalVisible}
+        type="delete"
+        onClose={() => setIsModalVisible(false)}
+        deleteItem={{ id, title, date }}
+      />
     </div>
   );
 }
